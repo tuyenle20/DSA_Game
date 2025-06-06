@@ -18,19 +18,13 @@ public class UI {
     Font CKFraternity, PurisaBold;
     
     BufferedImage heart_full, heart_half, heart_blank, crystal_full, crystal_blank;          
-    //BufferedImage keyImage ;
     public boolean messageOn = false ;
-    //public String message = "";
     ArrayList<String> message = new ArrayList<>();
     ArrayList<Integer> messageCounter = new ArrayList<>();
-    //int messageCounter =0;
     public boolean gameFinished = false;
     public String currentDialogue = "";
     public int commandNum = 0;
-    public int titleScreenState = 0;//0: the 1st screen, 1: the 2nd screen
-    
-    // public  int frameX;
-    // public  int frameY;
+    public int titleScreenState = 0;
     public int slotCol = 0;
     public int slotRow = 0;
     int subState = 0;
@@ -63,8 +57,6 @@ public class UI {
 
     }
     public void addMessage(String text ){
-        
-
         message.add(text);
         messageCounter.add(0);
     }
@@ -96,8 +88,6 @@ public class UI {
             drawPlayerLife();
             drawDialogueScreen();
         }
-        
-    
         //OPTIONS STATE
         if(gp.gameState == gp.optionsState )
         {
@@ -110,7 +100,6 @@ public class UI {
             drawGameOverScreen();
         }
         //GAME FINISH
-       
         if(gameFinished == true ){
                 //g2.setFont(arial_40);
                 g2.setColor(new Color(30, 144,255));
@@ -119,17 +108,12 @@ public class UI {
                 int textLenght;
                 int x ;
                 int y ;
-            
-
-
-
                 text = " YOU FOUND THE TREASURE ";
                 textLenght = (int)g2.getFontMetrics().getStringBounds(text,g2 ).getWidth();
                 x=gp.screenWidth/2 - textLenght/2;
                 y=gp.screenHeight/2 - (gp.tileSize*2);
                 g2.drawString(text, x, y);
 
-         
                 g2.setColor(new Color(30, 144,255));
                 text = " CONGRATULATION! ";
                 textLenght = (int)g2.getFontMetrics().getStringBounds(text,g2 ).getWidth();
@@ -138,11 +122,7 @@ public class UI {
                 g2.drawString(text, x, y);
 
                 gp.gameThread = null;
-
         }
-    
-            
-        
     }
     
 
@@ -161,7 +141,7 @@ public class UI {
                 g2.setColor(Color.WHITE);
                 g2.drawString(message.get(i), messageX, messageY);
 
-                int counter = messageCounter.get(i) + 1;//messageCounter++
+                int counter = messageCounter.get(i) + 1;
                 messageCounter.set(i, counter);//setbthe counter to the array
                 messageY += 50;
 
@@ -175,7 +155,6 @@ public class UI {
     }
 
     public void drawPlayerLife() {
-//        gp.player.life = 3;
         int x = gp.tileSize/2;
         int y = gp.tileSize/2;
         int i = 0;
@@ -189,7 +168,7 @@ public class UI {
                 x = gp.tileSize/2;
                 y = gp.tileSize/2;
                 i = 0;
-                //ĐRAW CURRENT LIFE
+                //DRAW CURRENT LIFE
                 while(i < gp.player.life) {
                     g2.drawImage(heart_half, x, y, null);
                     i++;
@@ -199,13 +178,10 @@ public class UI {
                     i++; 
                     x += gp.tileSize;
             }
-            // DRAW MANA ICON (chỉ vẽ 1 cục mana)
+            // DRAW MANA ICON 
                     x = (gp.tileSize / 2) - 5;
                     y = (int)(gp.tileSize * 1.5);
                     g2.drawImage(crystal_full, x, y, null);
-
-                  
-            
         }
     public void drawTitleScreen()
     {
@@ -270,10 +246,6 @@ public class UI {
                 g2.drawString(">", x - gp.tileSize, y);
             }
         }
-
-        
-
-        
     }
 
     public void drawPauseScreen()
@@ -284,10 +256,7 @@ public class UI {
         int y = gp.screenHeight/2;
 
         g2.drawString(text, x, y);
-
     }
-    
-
     public void drawDialogueScreen()
     {
         //WINDOW
