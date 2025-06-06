@@ -12,17 +12,13 @@ public final class Player extends Entity {
     
     public final int screenX;
     public final int screenY;
-    // int standCounter = 0;
     public boolean attackCanceled = false;
-    //public ArrayList<Entity> inventory = new ArrayList<>();
-   // public final int maxInventorySize = 20;
     private BufferedImage left2;
 
 
     public Player(GamePanel gp, KeyHandler keyH) {
 
         super(gp);
-
         this.keyH = keyH;
         
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
@@ -36,7 +32,6 @@ public final class Player extends Entity {
         solidArea.width = 24;
         solidArea.height = 24;
         //ATTACK AREA
-
         setDefaultValues();
         getPlayerImage();
         
@@ -44,12 +39,10 @@ public final class Player extends Entity {
     public void setDefaultValues() {
         worldX = gp.tileSize * 18;
         worldY = gp.tileSize * 18;
-        // worldY = gp.tileSize * 27;
         speed = 4;
         direction = "down";
 
         //PLAYER STATUS
-        //level =1;
         maxLife = 30;
         life = 6;
         maxMana = 9999;
@@ -68,12 +61,7 @@ public final class Player extends Entity {
         life = 6;
         mana = maxMana;
         invincible = false;
-
-
     }
-   
-    
-    
     public void getPlayerImage()
     {
         up1 = setup("/player/up1",gp.tileSize,gp.tileSize);   
@@ -116,9 +104,6 @@ public final class Player extends Entity {
                 //CHECK MONSTER COLLISION
                 int monsterIndex = gp.cChecker.checkEntity(this, gp.ghost);
                 contactMonster(monsterIndex);
-
-                // CHECK EVENT 
-                //gp.eHandler.checkEvent();
                 
                  // IF COLLISION IS FALSE, PLAYER CAN MOVE
                  if(collisionOn == false && keyH.enterPressed == false){
@@ -203,7 +188,6 @@ public final class Player extends Entity {
             int currentWorldY = worldY;
             int solidAreaWidth = solidArea.width;
             int solidAreaHeith = solidArea.height;
-            //Adjust player's world x/y for the attackarea 
             switch ( direction){
                 case "up" : worldY -= attackArea.height ;break;
                 case "down" : worldY += attackArea.height ;break;
@@ -246,27 +230,7 @@ public final class Player extends Entity {
             gp.obj[i].use(this);
             gp.obj[i] = null;
         }
-        // INVENTORY ITEMS
-        /*else {
-            String text;
-        if( inventory.size() != maxInventorySize){
-            inventory.add(gp.obj[i]);
-            gp.playSE(1);
-            text = "Got a "+ gp.obj[i].name +"!";
-            
-    
-            switch (objectName) {
-            case "Chest":
-                text = null; 
-            }
-        }
-        else {
-            text = "You cannot carry any more";
-            
-        }
-        gp.ui.addMessage(text);
-        gp.obj[i] = null;
-        }*/
+
         }
     }
 
