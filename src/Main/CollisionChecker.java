@@ -23,8 +23,8 @@ public class CollisionChecker {
 
         int tileNum1, tileNum2;
 
-        switch(entity.direction){           // tạo góc chặn để khi gặp cây sẽ bị chặn lại
-            case "up":                      // góc chặn khi đi lên, xuống, trái, phải nếu gặp cây
+        switch(entity.direction){           
+            case "up":                
                 entityTopRow = (entityTopWorldY - entity.speed)/ gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[entityLeftCol][ entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
@@ -69,8 +69,7 @@ public class CollisionChecker {
                     //Get entity's solid position
                     entity.solidArea.x = entity.worldX + entity.solidArea.x;
                     entity.solidArea.y = entity.worldY + entity.solidArea.y;
-                    //Get the object's solid positiom
-                    
+                    //Get the object's solid position
                     gp.obj[i].solidArea.x = gp.obj[i].worldX + gp.obj[i].solidArea.x;
                     gp.obj[i].solidArea.y = gp.obj[i].worldY + gp.obj[i].solidArea.y;
 
@@ -107,8 +106,8 @@ public class CollisionChecker {
                     //Get entity's solid position
                     entity.solidArea.x = entity.worldX + entity.solidArea.x;
                     entity.solidArea.y = entity.worldY + entity.solidArea.y;
-                    //Get the object's solid positiom
                     
+                    //Get the object's solid position
                     target[i].solidArea.x = target[i].worldX + target[i].solidArea.x;
                     target[i].solidArea.y = target[i].worldY + target[i].solidArea.y;
 
