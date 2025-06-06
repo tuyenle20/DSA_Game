@@ -95,89 +95,12 @@ public class BlueGhost extends Entity {
 
         return direction;
     }
-    /*public int distanceToPlayerTile() {
-    int ghostCol = worldX / gp.tileSize;
-    int ghostRow = worldY / gp.tileSize;
-    int playerCol = gp.player.worldX / gp.tileSize;
-    int playerRow = gp.player.worldY / gp.tileSize;
-
-    int dx = Math.abs(ghostCol - playerCol);
-    int dy = Math.abs(ghostRow - playerRow);
-    return Math.max(dx, dy); // Chebyshev distance
-}*/
-
-
-    /*public void setAction() {
-    actionLockCounter++;
-
-    if (actionLockCounter >= 15) {
-        int distance = distanceToPlayerTile();
-
-        if (distance <= 5) {
-            direction = pathfindingDirection(); // Đuổi theo Pacman
-        } else {
-            setRandomDirection(); // Lang thang ngẫu nhiên
-        }
-
-        actionLockCounter = 0;
-    }
-    gp.cChecker.checkTile(this);
-    if (!collisionOn) {
-        moveToDirection(); // OK -> di chuyển
-    } else {
-        // Nếu có tường -> chọn hướng khác
-        int distance = distanceToPlayerTile();
-        if (distance <= 0) {
-            direction = pathfindingDirection(); // Tìm đường khác đến Pacman
-        } else {
-            setRandomDirection(); // Đi hướng khác ngẫu nhiên
-        }
-    }
-
-
-    int i = new Random().nextInt(100) + 1;
-    if (i > 99 && projectile.alive == false && shotAvailableCounter == 30) {
-        projectile.set(worldX, worldY, direction, true, this);
-        gp.projectileList.add(projectile);
-        shotAvailableCounter = 0;
-    }
-}
-
-    public void moveToDirection() {
-    switch (direction) {
-        case "up": worldY -= speed; break;
-        case "down": worldY += speed; break;
-        case "left": worldX -= speed; break;
-        case "right": worldX += speed; break;
-    }
-}
-public void setRandomDirection() {
-    int i = new Random().nextInt(100); // 0 - 99
-
-    if (i < 25) {
-        direction = "up";
-    } else if (i < 50) {
-        direction = "down";
-    } else if (i < 75) {
-        direction = "left";
-    } else {
-        direction = "right";
-    }
-}
-
-    public void damageReaction()
-    {
-        actionLockCounter = 0;
-        direction = gp.player.direction;
-    }
-    public void checkDrop() {
-        dropItem(new OBJ_Heart(gp));
-    }*/
+    
     public void setAction() {
     actionLockCounter++;
 
-    if (actionLockCounter >= 15) { // cập nhật hướng thường xuyên hơn
-        direction = pathfindingDirection(); // lấy hướng gần nhất về phía Pacman
+    if (actionLockCounter >= 15) { 
+        direction = pathfindingDirection(); 
         actionLockCounter = 0;
     }
     
