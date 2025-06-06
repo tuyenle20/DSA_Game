@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import javax.imageio.ImageIO;
-// import main.GamePanel;
 public final class TileManager {
     
     GamePanel gp;
@@ -46,7 +45,6 @@ public final class TileManager {
         }
     }
 
-    
     public void loadMap(String filePath) {
         try {
             InputStream is = getClass().getResourceAsStream(filePath);
@@ -119,9 +117,5 @@ public final class TileManager {
     }
     int tileNum = mapTileNum[col][row];
     return !tile[tileNum].collision;
-}
-
-
-
-
+    }
 }
