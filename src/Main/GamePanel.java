@@ -4,7 +4,7 @@ import Entity.Entity;
 import Entity.Player;
 import Tile.TileManager;
 import java.awt.Color;
-import java.awt.Dimension; // Corrected the spelling from "Dimention" to "Dimension"
+import java.awt.Dimension; 
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -17,11 +17,11 @@ import javax.swing.JPanel;
 import monster.WhiteGhost;
 
 public class GamePanel extends JPanel  implements Runnable{
-    final int originalTileSize = 16; // 16x16 tile
+    final int originalTileSize = 16;
     final int scale = 3;
 
-    public final int tileSize = originalTileSize * scale; // 48x48 tile
-    public final int maxScreenCol = 20;//20
+    public final int tileSize = originalTileSize * scale;
+    public final int maxScreenCol = 20;
     public final int maxScreenRow = 12;
     public final int screenWidth = tileSize * maxScreenCol;
     public final int screenHeight = tileSize * maxScreenRow;
@@ -56,11 +56,9 @@ public class GamePanel extends JPanel  implements Runnable{
     //Put all the entities (player,npc, object) into this list
     //sort -> the entity lowest worldY will indext 0;
     public ArrayList<Entity> projectileList = new ArrayList<>();
-    // public InteractiveTile iTile[] = new InteractiveTile[50];
     ArrayList<Entity> entityList = new ArrayList<>();
     public ArrayList<Entity> particleList = new ArrayList<>();
     
-
     //Game state
     public int gameState;
     public final int titleState = 0;
@@ -70,12 +68,10 @@ public class GamePanel extends JPanel  implements Runnable{
     public final int characterState = 4;
     public final int optionsState = 5;
     public final int gameOverState = 6; 
-
-
    
     public GamePanel() {
-        this.setPreferredSize(new Dimension(screenWidth, screenHeight)); // Fixed "Dimention" typo
-        this.setBackground(Color.BLACK); // Best practice to use uppercase for color constants
+        this.setPreferredSize(new Dimension(screenWidth, screenHeight)); 
+        this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
@@ -86,10 +82,7 @@ public class GamePanel extends JPanel  implements Runnable{
         aSetter.setObject();
         aSetter.setNPC();
         aSetter.setGhost();
-        
-
         gameState = titleState;
-
     }
 
     public void retry(){
@@ -98,8 +91,6 @@ public class GamePanel extends JPanel  implements Runnable{
         player.restoreLifeAndMan();
         aSetter.setNPC();
         aSetter.setGhost();
-        //aSetter.setBigSnowMan();
-    
     }
 
     public void restart(){
@@ -107,13 +98,9 @@ public class GamePanel extends JPanel  implements Runnable{
         player.setDefaultValues();
         player.setDefaultPositions();
         player.restoreLifeAndMan();
-        //player.setItems();
         aSetter.setObject();
         aSetter.setNPC();
         aSetter.setGhost();
-        //aSetter.setBigSnowMan();
-        // aSetter.setInteractiveTile();
-
     }
     public void setFullScreen()
     {
@@ -181,9 +168,6 @@ public class GamePanel extends JPanel  implements Runnable{
                         }
                 }
             }
-            
-
-
             for(int i = 0; i < projectileList.size(); i++)
             {
                 if(projectileList.get(i) != null)
@@ -300,8 +284,6 @@ public class GamePanel extends JPanel  implements Runnable{
 
             //EMPTY ENTITY LIST
             entityList.clear();
-            // ENVIRONMENT
-            //eManage.draw(g2);
             
             //UI
             ui.draw(g2);
