@@ -5,9 +5,6 @@ public class EventHandler  {
     EventRect eventRect[][];
 
     int previousEventX, previousEventY;
-    // boolean canTouchEvent =true;
-
-
     public EventHandler(GamePanel gp) {
         this.gp = gp;
 
@@ -32,29 +29,17 @@ public class EventHandler  {
 
     }
     public int worldX,worldY;
-
-    /*public void checkEvent() {
-
-        // CHECK IF THE PLAYER CHARACTER IS MORE THAN 1 TILE AWAY FROM THE LAST EVENT
-        int xDistance = Math.abs(gp.player.worldX - previousEventX);    //horizontal or vertical, take greater one
-        int yDistance = Math.abs(gp.player.worldY - previousEventY);
-        int distance = Math.max(xDistance,yDistance);
-        
-
-        
-    }*/
     public boolean hit(int col, int row, String reqDirection) {
         boolean hit = false;
         
         gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
         gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
         eventRect[col][row].x = col * gp.tileSize + eventRect[col][row].x;
-        eventRect[col][row].y = row * gp.tileSize + eventRect[col][row].y; // Use eventRow for y position
+        eventRect[col][row].y = row * gp.tileSize + eventRect[col][row].y; 
         
-        if (gp.player.solidArea.intersects(eventRect[col][row]) && eventRect[col][row].eventDone == false ) {          // 547,849/20
+        if (gp.player.solidArea.intersects(eventRect[col][row]) && eventRect[col][row].eventDone == false ) {          
             if (gp.player.direction.equals(reqDirection) || reqDirection.equals("any")) {
                 hit = true;
-
                 previousEventX =gp.player.worldX;
                 previousEventY =gp.player.worldY;
             }
@@ -66,11 +51,5 @@ public class EventHandler  {
         eventRect[col][row].y = eventRect[col][row].eventRectDefaultY;
     
         return hit;
-    }
-
-
-  
-   
-   
-    
+    }  
 }
