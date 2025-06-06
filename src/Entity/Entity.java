@@ -17,23 +17,17 @@ public class Entity {
     public int speed;
 
     public BufferedImage up1 , down1 , right1 , left1 ; 
-
     public int spriteCounter = 0;
-    
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public Rectangle attackArea = new Rectangle(0,0,0,0);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
     public int actionLockCounter = 0;
-   
     String dialogues[] = new String[20];
-    
     public BufferedImage image, image2, image3;
     public String name;
-    
-    
-    
     public int invincibleCounter = 0;
+    
     //STATE
     public int worldX,worldY;
     public String direction = "down";
@@ -55,36 +49,28 @@ public class Entity {
     public int maxMana;
     public int mana;
     public int ammo;
-
-    //public int strength;
-    //public int dexterity;
     public int attack;
     public int defense; 
-
     public Projectile projectile;
 
     // ITEM ATTRIBUTES
     public int value;
     public int useCost; 
     //TYPE
-    public int type; // 0 = player , 1= npc , 2= monster
+    public int type; 
     public final int type_player = 0;
     public final int type_npc = 1;
     public final int type_monster = 2;
     public final int type_consumable = 5;
     public final int type_pickupOnly = 6;
 
-    
-
     public Entity(GamePanel gp)
     {
         this.gp = gp;
-}
+    }
     
     public void setAction(){}
-    public void damageReaction()
-    {
-        
+    public void damageReaction() {
     }
     public void speak(){
         if(dialogues[dialougeIndex] == null)
@@ -119,7 +105,6 @@ public class Entity {
                 gp.obj[i].worldY = worldY;
                 break;
             }
-
         }
     }
 
@@ -129,7 +114,7 @@ public class Entity {
    }
    
     public int getParticleSize(){
-           int size =0;    // 6 pixels
+           int size =0;    
            return size;
        }
    
@@ -150,7 +135,7 @@ public class Entity {
         int speed = generator.getParticleSpeed();
         int maxLife = generator.getParticleMaxLife();
 
-        Particle p1 = new Particle(gp, target, color, size, speed, maxLife, -2, -1);     //change holizontal vector -1 to -2
+        Particle p1 = new Particle(gp, target, color, size, speed, maxLife, -2, -1);    
         Particle p2 = new Particle(gp, target, color, size, speed, maxLife, 2, -1);
         Particle p3 = new Particle(gp, target, color, size, speed, maxLife, -2, 1);
         Particle p4 = new Particle(gp, target, color, size, speed, maxLife, 2, 1);
@@ -160,10 +145,7 @@ public class Entity {
         gp.particleList.add(p4);
     }
 
-
-
-    public void update()
-    {
+    public void update() {
         setAction();
 
         collisionOn = false;
@@ -171,7 +153,6 @@ public class Entity {
         gp.cChecker.checkObject(this, false);
         gp.cChecker.checkEntity(this, gp.npc);
         gp.cChecker.checkEntity(this, gp.ghost);
-        //gp.cChecker.checkEntity(this,gp.iTile);
         boolean contactPlayer = gp.cChecker.checkPlayer(this);
 
         if(this.type ==type_monster && contactPlayer == true)
@@ -259,12 +240,11 @@ public class Entity {
                 int barX;
                 int barY = screenY - 15;
 
-                // Nếu là White Ghost thì căn giữa theo kích thước lớn hơn
                 if("White Ghost".equals(name)) {
-                    int whiteGhostWidth = gp.tileSize * 4; // WhiteGhost là 4 tile
+                    int whiteGhostWidth = gp.tileSize * 4; 
                     barX = screenX + (whiteGhostWidth - barWidth) / 2;
                 } else {
-                    barX = screenX; // Ghost bình thường
+                    barX = screenX;
                 }
 
                 g2.setColor(new Color(35, 35, 35));
