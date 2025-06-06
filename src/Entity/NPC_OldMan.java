@@ -38,7 +38,7 @@ public class NPC_OldMan extends Entity
         if(actionLockCounter == 120)
         {
             Random random = new Random();
-            int i = random.nextInt(100) + 1;//pick a random no from 1 -> 100
+            int i = random.nextInt(100) + 1;
     
             if(i <= 25)
             {
@@ -63,7 +63,6 @@ public class NPC_OldMan extends Entity
 
     public void speak()
     {
-        //Do this character specific stuff
         super.speak();
     }
 
